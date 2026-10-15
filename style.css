@@ -709,7 +709,7 @@ footer {
   text-decoration: none;
 }
 
-/* Hamburger menu */
+/* Hamburger menu va Mobil menyu (Barcha ekranlarda standart yashirin turadi) */
 .menu-toggle {
   display: none;
   background: transparent;
@@ -724,6 +724,32 @@ footer {
   width: 25px;
   height: 2px;
   background: var(--text-primary);
+}
+
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  padding: 20px 5%;
+  gap: 15px;
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+}
+
+.mobile-menu a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 15px;
+  transition: color 0.3s;
+}
+
+.mobile-menu a:hover {
+  color: var(--text-primary);
+}
+
+.mobile-menu a.btn-primary {
+  color: #fff;
+  text-align: center;
+  margin-top: 5px;
 }
 
 /* Mobil Moslashuv (Media query) */
@@ -742,15 +768,6 @@ footer {
   
   .menu-toggle {
     display: flex;
-  }
-  
-  .mobile-menu {
-    display: none;
-    flex-direction: column;
-    padding: 20px;
-    gap: 15px;
-    background: var(--bg-card);
-    border-bottom: 1px solid var(--border);
   }
   
   .mobile-menu.active {
