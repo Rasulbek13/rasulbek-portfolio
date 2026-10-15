@@ -59,8 +59,8 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: linear-gradient(rgba(82,118,199,0.03) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(82,118,199,0.03) 1px, transparent 1px);
+  background-image: linear-gradient(rgba(82, 118, 199, 0.03) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(82, 118, 199, 0.03) 1px, transparent 1px);
   background-size: 40px 40px;
   z-index: -1;
   pointer-events: none;
@@ -77,8 +77,9 @@ header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(8, 11, 18, 0.85);
-  backdrop-filter: blur(12px);
+  background: rgba(8, 11, 18, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border);
   padding: 15px 0;
 }
@@ -140,7 +141,7 @@ header {
 
 .btn-primary {
   background: var(--accent);
-  color: #fff;
+  color: #fff !important;
   box-shadow: 0 0 15px var(--accent-glow);
 }
 
@@ -151,13 +152,13 @@ header {
 
 .btn-secondary {
   background: transparent;
-  color: var(--text-primary);
+  color: var(--text-primary) !important;
   border: 1px solid var(--border);
 }
 
 .btn-secondary:hover {
   border-color: var(--accent);
-  background: rgba(82, 118, 199, 0.05);
+  background: rgba(82, 118, 199, 0.08);
 }
 
 .btn-outline {
@@ -168,6 +169,73 @@ header {
 .btn-outline:hover {
   color: var(--text-primary);
   background: rgba(255, 255, 255, 0.05);
+}
+
+/* Hamburger tugmasi va Mobil menyu dizayni */
+.menu-toggle {
+  display: none;
+  background: rgba(82, 118, 199, 0.1);
+  border: 1px solid var(--border);
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--text-primary);
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+.mobile-menu {
+  display: none !important;
+  position: fixed;
+  top: 63px;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  flex-direction: column;
+  padding: 20px 5%;
+  gap: 8px;
+  background: rgba(13, 20, 36, 0.97);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-active);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.65);
+}
+
+.mobile-menu a {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 12px 16px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(82, 118, 199, 0.1);
+  transition: all 0.25s ease;
+}
+
+.mobile-menu a:hover,
+.mobile-menu a:active {
+  background: rgba(82, 118, 199, 0.15);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.mobile-menu a.btn-primary {
+  background: var(--accent);
+  color: #fff !important;
+  text-align: center;
+  margin-top: 8px;
+  padding: 14px 20px;
+  font-weight: 600;
+  border-color: var(--accent);
 }
 
 /* Hero */
@@ -430,7 +498,7 @@ header {
 .day-tab.active, .day-tab:hover {
   border-color: var(--accent);
   color: var(--text-primary);
-  background: rgba(82,118,199, 0.1);
+  background: rgba(82, 118, 199, 0.1);
 }
 
 .platform-selector {
@@ -440,7 +508,7 @@ header {
 }
 
 .platform-tab {
-  background: rgba(255,255,255, 0.02);
+  background: rgba(255, 255, 255, 0.02);
   border: 1px solid transparent;
   color: var(--text-secondary);
   padding: 6px 12px;
@@ -488,7 +556,7 @@ header {
 }
 
 .preview-header {
-  background: rgba(255,255,255, 0.03);
+  background: rgba(255, 255, 255, 0.03);
   padding: 10px 15px;
   display: flex;
   justify-content: space-between;
@@ -709,53 +777,17 @@ footer {
   text-decoration: none;
 }
 
-/* Hamburger menu va Mobil menyu (Barcha ekranlarda standart yashirin turadi) */
-.menu-toggle {
-  display: none;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.menu-toggle span {
-  display: block;
-  width: 25px;
-  height: 2px;
-  background: var(--text-primary);
-}
-
-.mobile-menu {
-  display: none;
-  flex-direction: column;
-  padding: 20px 5%;
-  gap: 15px;
-  background: var(--bg-card);
-  border-bottom: 1px solid var(--border);
-}
-
-.mobile-menu a {
-  color: var(--text-secondary);
-  text-decoration: none;
-  font-size: 15px;
-  transition: color 0.3s;
-}
-
-.mobile-menu a:hover {
-  color: var(--text-primary);
-}
-
-.mobile-menu a.btn-primary {
-  color: #fff;
-  text-align: center;
-  margin-top: 5px;
-}
-
 /* Mobil Moslashuv (Media query) */
 @media (max-width: 900px) {
   .hero-section, .about-grid, .interactive-display, .contact-wrapper {
     grid-template-columns: 1fr;
+  }
+
+  .meta-sidebar {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-right: 0;
+    padding-bottom: 15px;
   }
   
   .process-timeline {
@@ -771,11 +803,17 @@ footer {
   }
   
   .mobile-menu.active {
-    display: flex;
+    display: flex !important;
   }
 }
 
 @media (max-width: 600px) {
+  .hero-section {
+    padding: 40px 0;
+  }
+  .contact-wrapper {
+    padding: 24px 18px;
+  }
   .process-timeline {
     grid-template-columns: 1fr;
   }
